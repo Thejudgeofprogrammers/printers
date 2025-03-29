@@ -1,0 +1,17 @@
+service:
+  web_server:
+    image: nginx
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=foobar.com
+      - NGINX_PORT=80
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

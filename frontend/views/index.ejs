@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <h1>Тимелапс с камеры</h1>
+
+    <% ipx.forEach(function(ip) { %>
+        <div class="camera-container">
+            <h2>Камера: <%= ip %></h2>
+            <img id="camera-image-<%= ip %>" src="http://<%= ip %>/timelapse/timelapse.jpg?cacheBust=<%= new Date().getTime() %>" alt="Камера">
+        </div>
+    <% }); %>
+
+    <script>
+        const cameraIps = <%- JSON.stringify(ipx) %>;
+
+        function updateImages() {
+            cameraIps.forEach(function(ip) {
+                var image = document.getElementById('camera-image-' + ip);
+                var timestamp = new Date().getTime();
+                image.src = "http://" + ip + "/timelapse/timelapse.jpg?cacheBust=" + timestamp;
+            });
+        }
+
+        setInterval(updateImages, 67);
+    </script>
+</body>
+</html>

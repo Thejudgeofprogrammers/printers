@@ -10,6 +10,7 @@ async def get_logs(monitoring_service: MonitoringService = Depends()):
         "message": { 
             "memory": data[0],
             "cpu": data[1],
-            "server_status": data[2]
+            "disk": data[2],
+            "server_status": data[3]
         } 
     }

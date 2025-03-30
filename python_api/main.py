@@ -19,3 +19,5 @@ if __name__ == "__main__":
     host = os.getenv("HOST", "127.0.0.1")
     uvicorn.run(app, host=host, port=port)
 
+
+

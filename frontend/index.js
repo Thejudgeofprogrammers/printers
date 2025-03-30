@@ -31,6 +31,11 @@ app.get('/', (req, res) => {
     res.render('index', { ipx: cameraIps });
 });
 
+app.get('/auth', (req, res) => {
+    res.render('auth');
+});
+
 app.listen(PORT, HOST, () => {
     console.log(`Server located is http://${HOST}:${PORT}`);
 })
+
